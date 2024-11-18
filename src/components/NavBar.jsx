@@ -1,15 +1,15 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 function NavBar() {
   return (
     <div className="navbar">
-      <div className="navbar-logo">
+      <Link className="navbar-logo">
         <img
           className="logo"
           src="/chattercircle.png"
           alt="Chatter Circle Logo"
         />
-      </div>
+      </Link>
       <div className="navbar-search">
         <ion-icon name="search-outline"></ion-icon>
         <input

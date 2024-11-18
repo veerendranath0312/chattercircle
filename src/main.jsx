@@ -11,6 +11,7 @@ import App from './App.jsx'
 import Home from './pages/Home.jsx'
 import Create from './pages/Create.jsx'
 import View from './pages/View.jsx'
+import Edit from './pages/Edit.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromChildren(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
       <Route path="" element={<Home />} />
       <Route path="/create" element={<Create />} />
       <Route path="/posts/:postId" element={<View />} />
+      <Route path="/posts/:postId/edit" element={<Edit />} />
     </Route>
   )
 )

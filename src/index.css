@@ -41,6 +41,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .navbar .navbar-logo .logo {
@@ -114,7 +116,31 @@ ion-icon {
 .home-feed {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
+}
+
+.home-feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-feed h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+.home-feed-header select {
+  background-color: transparent;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: 8px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid var(--bg-hover);
+  transition: all 0.25s ease-in-out;
+  width: 150px;
 }
 
 .post-info {
@@ -125,13 +151,13 @@ ion-icon {
 }
 
 .post-info,
-.likes {
+.action-btns,
+.comment-form {
   background: var(--bg-secondary);
   border-radius: 4px;
 }
 
 .post-info {
-  margin-bottom: 8px;
   padding: 24px;
 }
 
@@ -151,12 +177,36 @@ ion-icon {
   margin-bottom: 16px;
 }
 
-.post .likes-count {
+.post .description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.post .post-info .image-container img {
+  width: 300px;
+  height: auto;
+  max-width: none;
+  max-height: none;
+  margin-bottom: 20px;
+  border: 1px solid var(--bg-hover);
+  border-radius: 4px;
+}
+
+.post .stats {
+  display: flex;
+  gap: 20px;
+}
+
+.post .likes-count,
+.post .comments-count {
   font-size: 13px;
   color: var(--text-secondary);
 }
 
-.post .likes {
+.post .action-btns,
+.post .comment-form {
   padding: 16px 24px;
   display: flex;
   align-items: center;
@@ -165,12 +215,12 @@ ion-icon {
   color: var(--text-secondary);
 }
 
-.post .likes ion-icon {
+.post .action-btns ion-icon {
   width: 18px;
   height: 18px;
 }
 
-.post .likes .like-btn {
+.post .action-btns .icon-btn {
   background-color: transparent;
   outline: none;
   border: none;
@@ -183,9 +233,18 @@ ion-icon {
   transition: all 0.25s ease-in-out;
 }
 
-.post .likes .like-btn:hover,
-.post .likes .like-btn:hover ion-icon {
+.post .action-btns .icon-btn:hover,
+.post .action-btns .icon-btn:hover ion-icon {
   color: var(--text-primary);
+}
+
+.post .action-btns .delete-btn:hover,
+.post .action-btns .delete-btn:hover ion-icon {
+  color: var(--accent-danger);
+}
+
+.post .action-btns .edit-btn {
+  text-decoration: none;
 }
 
 /* ---------- Create Page Styling ---------- */
@@ -227,7 +286,8 @@ ion-icon {
 }
 
 .form input,
-.form textarea {
+.form textarea,
+.comment-form input {
   background-color: transparent;
   background-color: var(--bg-secondary);
   color: var(--text-primary);
@@ -246,6 +306,19 @@ ion-icon {
 .form textarea {
   resize: none;
   display: block;
+  /* overflow: hidden; */
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.form textarea::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.form textarea {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .notification {
@@ -290,4 +363,92 @@ ion-icon {
 
 .btn:active {
   background-color: #c0c0c0;
+}
+
+/* ---------- View Page Styling ---------- */
+.view-container .post-info {
+  margin-bottom: 8px;
+}
+.view-container .action-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-container .action-btns > div {
+  display: flex;
+  gap: 16px;
+}
+
+.comment-form {
+  display: flex;
+  margin-top: 8px;
+}
+
+.comment-form input {
+  padding: 8px 16px;
+  border: 1px solid var(--bg-hover);
+  flex: 1;
+  border-radius: 0;
+}
+
+.comment-form input:focus {
+  background-color: var(--bg-hover);
+}
+
+.comment-form .btn-post {
+  padding: 8px 16px;
+  background: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  outline: none;
+  cursor: pointer;
+}
+
+.comment-form .btn-post:active {
+  opacity: 0.7;
+}
+
+.comments-section {
+  margin-top: 80px;
+}
+
+.comments-section h3 {
+  font-size: 18px;
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.comments-section .comments {
+  list-style: none;
+  padding: 20px;
+  border: 1px dashed var(--text-primary);
+}
+
+.comments-section .comments .comment {
+  background: var(--bg-secondary);
+  padding: 16px 24px;
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.comments-section .comments .comment:not(:last-child) {
+  margin-bottom: 10px;
+}
+.fade-in-animation {
+  animation: fadeIn 0.3s linear;
+}
+
+.comment .posted-at {
+  font-size: 12px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

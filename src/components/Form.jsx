@@ -1,6 +1,6 @@
 function Form({ formData, handleFormDataChange }) {
   return (
-    <form className="form">
+    <form className="form fade-in-animation">
       <div className="form-group">
         <label htmlFor="name">Name</label>
         <input
@@ -19,7 +19,7 @@ function Form({ formData, handleFormDataChange }) {
           name="description"
           id="description"
           placeholder="Add a description"
-          rows={5}
+          rows={8}
           value={formData.description}
           onChange={handleFormDataChange}
         ></textarea>
