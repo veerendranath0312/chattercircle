@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+:root {
+  --bg-primary: #000000;
+  --bg-secondary: #131313;
+  --bg-hover: #2a2a2a;
+  --text-primary: #f9f9f9;
+  --text-secondary: #acacac;
+  --accent-primary: #33bb7a;
+  --accent-danger: #e14d4d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* ---------- Navbar Styling ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--bg-hover);
+  background: var(--bg-primary);
+  z-index: 1;
+}
+
+.navbar .navbar-logo {
+  padding: 20px;
+  border-right: 1px solid var(--bg-hover);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar .navbar-logo .logo {
+  width: 40px;
+}
+
+.navbar .navbar-search {
+  padding: 20px;
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-right: 1px solid var(--bg-hover);
+}
+
+.navbar .navbar-search input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-secondary);
+  width: 100%;
+}
+
+.navbar .navbar-search input::placeholder {
+  color: var(--text-secondary);
+}
+
+ion-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--text-secondary);
+  transition: all 0.25s ease-in-out;
+}
+
+.navbar:hover ion-icon {
+  color: var(--text-primary);
+}
+
+.navbar .navbar-links {
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar .navbar-links .navlink {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  transition: all 0.25s ease-in-out;
+}
+
+.navbar .navbar-links .navlink:hover {
+  color: var(--text-primary);
+}
+
+.navbar .navbar-links .navlink.active {
+  color: var(--text-primary);
+}
+
+/* ---------- Main Container Styling ---------- */
+.container {
+  max-width: 1000px;
+  margin: 80px auto 0 auto;
+  padding: 20px;
+}
+
+/* ---------- Home Page Styling ---------- */
+.home-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.post-info {
+  display: block;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: all 0.25s ease-in-out;
+}
+
+.post-info,
+.likes {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+.post-info {
+  margin-bottom: 8px;
+  padding: 24px;
+}
+
+.post-info:hover {
+  background: var(--bg-hover);
+}
+
+.post .posted-at {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.post .name {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+
+.post .likes-count {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.post .likes {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.post .likes ion-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.post .likes .like-btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+
+.post .likes .like-btn:hover,
+.post .likes .like-btn:hover ion-icon {
+  color: var(--text-primary);
+}
+
+/* ---------- Create Page Styling ---------- */
+
+.form-container {
+  height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 28px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form .form-group label {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.form input,
+.form textarea {
+  background-color: transparent;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 16px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid var(--bg-secondary);
+  transition: all 0.25s ease-in-out;
+}
+
+.form input:focus,
+.form textarea:focus {
+  border: 1px solid var(--text-secondary);
+}
+
+.form textarea {
+  resize: none;
+  display: block;
+}
+
+.notification {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  transition: all 0.25s ease-in-out;
+  max-width: 500px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.notification-success {
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+.notification-error {
+  border: 1px solid var(--accent-danger);
+  color: var(--accent-danger);
+}
+
+.notification-success ion-icon {
+  color: var(--accent-primary);
+}
+
+.notification-error ion-icon {
+  color: var(--accent-danger);
+}
+
+/* Button Styling */
+.btn {
+  padding: 14px 20px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.25s ease-in-out;
+}
+
+.btn:active {
+  background-color: #c0c0c0;
+}
