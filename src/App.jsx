@@ -1,12 +1,16 @@
+import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
+
 import NavBar from './components/NavBar'
 
 function App() {
+  const [searchStr, setSearchStr] = useState('')
+
   return (
     <>
-      <NavBar />
+      <NavBar searchStr={searchStr} setSearchStr={setSearchStr} />
       <main className="container">
-        <Outlet />
+        <Outlet context={{ searchStr }} />
       </main>
     </>
   )

@@ -1,6 +1,6 @@
 import { NavLink, Link } from 'react-router-dom'
 
-function NavBar() {
+function NavBar({ searchStr, setSearchStr }) {
   return (
     <div className="navbar">
       <Link className="navbar-logo">
@@ -18,6 +18,8 @@ function NavBar() {
           id="search"
           autoComplete="off"
           placeholder="Search for posts..."
+          value={searchStr}
+          onChange={(e) => setSearchStr(e.target.value)}
         />
       </div>
       <div className="navbar-links">

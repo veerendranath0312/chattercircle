@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useOutletContext } from 'react-router-dom'
 import Post from '../components/Post'
-import { fetchPosts, updatePostById } from '../services/postsController'
+import { fetchPosts } from '../services/postsController'
 
 function Home() {
+  const { searchStr } = useOutletContext()
   const [posts, setPosts] = useState([])
   const [sortBy, setSortBy] = useState('')
 
@@ -26,6 +28,12 @@ function Home() {
     }
   })
 
+  const filteredPosts = searchStr
+    ? sortedPosts.filter((post) =>
+        post.name.toLowerCase().includes(searchStr.toLowerCase())
+      )
+    : sortedPosts
+
   return (
     <div className="home-feed">
       <div className="home-feed-header">
@@ -43,7 +51,7 @@ function Home() {
           </select>
         </div>
       </div>
-      {posts && sortedPosts.map((post) => <Post key={post.id} post={post} />)}
+      {posts && filteredPosts.map((post) => <Post key={post.id} post={post} />)}
     </div>
   )
 }

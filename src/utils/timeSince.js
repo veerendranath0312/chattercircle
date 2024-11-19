@@ -3,6 +3,9 @@ export const timeSince = (createdAt) => {
     (new Date().getTime() - new Date(createdAt).getTime()) / 1000
   )
 
+  if (secondsPast <= 0) {
+    return 'Just now' // Handle negative values
+  }
   if (secondsPast < 60) {
     return `${secondsPast} seconds ago`
   }
